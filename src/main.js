@@ -4,3 +4,4 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const jsesc = require('jsesc');
 const fs = require('fs');
+const config = require('./config');

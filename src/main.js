@@ -1,7 +1,5 @@
 const axios = require('axios');
 const fs = require('fs');
-const cheerio = require('cheerio');
-const jsesc = require('jsesc');
 const { ArgumentParser } = require('argparse');
 const config = require('./config');
 
@@ -23,26 +21,17 @@ async function xssAutomation() {
         const payloadsFile = '../xsstesting/xsspayloads.txt';
         const payloads = fs.readFileSync(payloadsFile, 'utf8').split('\n');
 
-        const response = await axios.request({
-            url: targetUrl,
-            method: 'POST',
-            data: 'paramName1=value1&paramName2=value2',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-        });
+        for (const payload of payloads) {
+            const data = `paramName1=${encodeURIComponent(payload)}&paramName2=value2`;
 
-        const html = response.data;
-        const $ = cheerio.load(html);
+            const response = await axios.post(targetUrl, data, {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+            });
 
-        payloads.forEach(payload => {
-            const appelement = $('#app-element');
-            const encodedpayload = jsesc(payload);
-            appelement.html(encodedpayload);
-
-            const modifiedhtml = $.html();
-            console.log(modifiedhtml);
-        });
+            console.log(response.data);
+        }
     } catch (error) {
         console.error('An error occurred:', error);
     }

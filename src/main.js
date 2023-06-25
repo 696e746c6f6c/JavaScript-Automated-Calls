@@ -1,19 +1,19 @@
 const axios = require('axios');
 const fs = require('fs');
 const { ArgumentParser } = require('argparse');
-const config = require('./config');
+const DOMPurify = require('dompurify').sanitize;
 
 const parser = new ArgumentParser({
-    addHelp: true,
+    add_help: true,
     description: 'XSS Automation Tool',
 });
 
-parser.addArgument('-t', '--target', {
+parser.add_argument('-t', '--target', {
     help: 'Target URL',
     required: true,
 });
 
-const args = parser.parseArgs();
+const args = parser.parse_args();
 const targetUrl = args.target;
 
 async function xssAutomation() {
@@ -38,6 +38,18 @@ async function xssAutomation() {
                 console.log('URL:', targetUrl);
                 console.log('Payload:', payload);
                 console.log('---');
+            }
+
+            if (typeof DOMPurify !== 'undefined') {
+                const sanitizedHtml = DOMPurify.sanitize(response.data, { SAFE_FOR_JQUERY: true });
+
+                if (sanitizedHtml.includes(payload)) {
+                    console.log('XSS Payload Detected:');
+                    console.log('URL:', targetUrl);
+                    console.log('Payload:', payload);
+                }
+            } else {
+                console.log('DOMPurify was not detected. Continue with further testing');
             }
         }
     } catch (error) {

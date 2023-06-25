@@ -30,7 +30,15 @@ async function xssAutomation() {
                 },
             });
 
-            console.log(response.data);
+            const status = response.status;
+            const headers = response.headers;
+
+            if (status === 200 && !headers['content-security-policy']) {
+                console.log('XSS Payload Detected:');
+                console.log('URL:', targetUrl);
+                console.log('Payload:', payload);
+                console.log('---');
+            }
         }
     } catch (error) {
         console.error('An error occurred:', error);

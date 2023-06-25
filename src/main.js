@@ -1,7 +1,7 @@
 const axios = require('axios');
 const fs = require('fs');
 const { ArgumentParser } = require('argparse');
-const DOMPurify = require('dompurify').sanitize;
+const { sanitize: DOMPurify } = require('dompurify');
 
 const parser = new ArgumentParser({
     add_help: true,
@@ -41,7 +41,7 @@ async function xssAutomation() {
             }
 
             if (typeof DOMPurify !== 'undefined') {
-                const sanitizedHtml = DOMPurify.sanitize(response.data, { SAFE_FOR_JQUERY: true });
+                const sanitizedHtml = DOMPurify(response.data, { SAFE_FOR_JQUERY: true });
 
                 if (sanitizedHtml.includes(payload)) {
                     console.log('XSS Payload Detected:');
@@ -49,7 +49,7 @@ async function xssAutomation() {
                     console.log('Payload:', payload);
                 }
             } else {
-                console.log('DOMPurify was not detected. Continue with further testing');
+                console.log('DOMPurify was not detected.Continue with further testing ');
             }
         }
     } catch (error) {

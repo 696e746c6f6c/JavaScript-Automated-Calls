@@ -10,7 +10,7 @@ const x = () => {
         //     port: 8888
         // },
 
-        payloadFile: "xsstesting/payload.txt",
+        payloadFile: "xsstesting/xsspayloads.txt",
         fileOutput: false,
         subdomains,
         port: [80, 443], // Here we specify multiple ports as an array, 8080 port is same as 80 port but however if there's something going on feel free to modify conf.js file.

@@ -1,6 +1,6 @@
 const x = (target) => {
     return {
-        // Proxy Config - one example, watch req/res through Fiddler.
+        // Proxy Config 
         // proxy: {
         //     host: "127.0.0.1",
         //     port: 8888

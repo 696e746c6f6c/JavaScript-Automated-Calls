@@ -55,7 +55,7 @@ async function mainFunction() {
                 // if statement is being used to check if the sanitized HTML contains the payload
                 if (sanitizedHTML.includes(payload)) {
                     console.log('XSS payload for DOMPurify sanitization was detected:');
-                    console.log('URL:', targetUrl);
+                    console.log('URL:', appURL);
                     console.log('Payload:', payload);
                 }
             } else {

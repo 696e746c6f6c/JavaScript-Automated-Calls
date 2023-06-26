@@ -1,6 +1,6 @@
 const x = (target) => {
     return {
-        // Proxy Config 
+        // Proxy Config - one example, watch req/res through Fiddler.
         // proxy: {
         //     host: "127.0.0.1",
         //     port: 8888
@@ -8,9 +8,9 @@ const x = (target) => {
 
         payloadFile: 'xsstesting/xsspayloads.txt',
         fileOutput: false,
-        host: target,
+        host: "url",
         port: 80,
-        path: '/special.plp?page={0}',
+        path: '/search.php?test={0}',
         method: 'POST',
         protocol: 'http:',
         postData: 'paramName1={0}&paramName2=paramValue2',

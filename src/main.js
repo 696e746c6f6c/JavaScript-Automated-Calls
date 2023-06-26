@@ -67,5 +67,5 @@ async function mainFunction() {
     }
 }
 
-// And at the main function of this automation is being called
+// And at the end main function of this automation is being called
 mainFunction();

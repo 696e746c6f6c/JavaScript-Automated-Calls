@@ -10,3 +10,6 @@ In order to be able to run this automation, make sure you have installed followi
 - dompurify module
 
 They can be found on official npm documentations. 
+
+# Configuration
+If you'd like to make some changes here, make sure to go to config.js file and change `payloadFile` value to another one. Obviously if you have better XSS wordlist. But however I made a 11k wordlist with all possible JavaScript malicious payloads. But still I might have missed something. 

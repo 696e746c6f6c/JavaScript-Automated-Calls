@@ -11,7 +11,7 @@ In order to be able to run this automation, make sure you have installed followi
 
 They can be found on official npm documentations. And don't forget to install Node.js framework if you still haven't.
 
-# Run
+# Usage
 First of all git clone this repository and then in your terminal make sure you have installed these modules that I have mentioned above. After that, in your terminal navigate to `~/src` directory where's `main.js` and `config.js` files and type this following command:
 
 `node main.js`

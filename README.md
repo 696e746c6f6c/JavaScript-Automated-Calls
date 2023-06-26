@@ -30,8 +30,6 @@ If you'd like to make some changes here, make sure to go to config.js file and c
 - Line #26 line add this following code:
 
 ```javascript
-const sanitizeHtmlExists = typeof sanitizeHtml === 'function';
-
 let payloadDetected = false;
 ```
 - And modify this following code:
@@ -51,8 +49,8 @@ break;
 - Line #44 add this following code:
 ```javascript
 if (status === 200 && !headers['content-security-policy']) {
-                console.log('XSS Payload Detected:');
-                console.log('URL:', targetUrl);
+                console.log('XSS Payload is working:');
+                console.log('URL:', appURL);
                 console.log('Payload:', payload);
                 console.log('---');
                 payloadDetected = true;

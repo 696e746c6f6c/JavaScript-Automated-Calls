@@ -1,5 +1,5 @@
 # Automated Calls
-This automation is called JavaScript calls for potential XSS findings: DOM XSS, Reflected XSS. I wouldn't like to recommend to test this for Stored XSS at all. Test it only for DOM XSS and Reflected XSS. This automation can be tested on any OS, no matter what is it, Windows, some Linux distribution, MacOS and so on. However the wordlist I made is pretty big but still it would be bigger with BigQuery generated set. However you need to buy BigQuery which is not free.
+This automation is called JavaScript calls for potential XSS findings: DOM XSS, Reflected XSS. I wouldn't like to recommend to test this for Stored XSS at all. Test it only for DOM XSS and Reflected XSS. This automation can be tested on any OS, no matter what is it, Windows, some Linux distribution, MacOS and so on. However the wordlist I made is pretty big but still it would be bigger with BigQuery generated set. However you need to buy BigQuery which is not free. 
 
 # Installation
 In order to be able to run this automation, make sure you have installed following modules:
@@ -60,3 +60,16 @@ if (status === 200 && !headers['content-security-policy']) {
             }
 ```
 
+## Attention
+If for some reason code automation doesn't work which I don't think so, please copy `main.js` and `config.js` files in your terminal and put them into `~/src` directory and make sure `xsspayloads.txt` is in new directory called `xsstesting`. But don't forget to sort this into one directory example `project` directory. After that modify this constant variable in the #24 line:
+
+```javascript
+const payloadsFile = '../xsstesting/xsspayloads.txt';
+```
+
+- Modify it to this following code again which is same one:
+
+```javascript
+const payloadsFile = '../yourdirectoryinprojectdir/yourffile.txt';
+```
+Here I used `../` notation in the file path which is used to navigate up one level in the directory hierarchy. It specifies that the file `xsspayloads.txt` is located in a directory one level above the current directory. Automation should be working file but still let's not make confusions here. 

@@ -46,6 +46,11 @@ async function mainFunction() {
                 console.log('URL:', appURL);
                 console.log('Payload:', payload);
                 console.log('---');
+            } else {
+                console.log('XSS Payload did not execute:');
+                console.log('URL:', appURL);
+                console.log('Payload:', payload);
+                console.log('---');
             }
 
             // I used a DOMPurify module, reason why is to check if DOMPurify library is available on target's application. DOMPurify became one of the most popular sanitizers these days
